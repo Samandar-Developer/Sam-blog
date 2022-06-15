@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>{{blog.title}}</h1>
+<h3>{{blog.topic}}</h3>
+<img src="{{ blog.cover_image.url }}" alt="Cover image">
+<p>{{blog.description}}</p>
+
+{% for tag in blog.tags.all %}
+<p>{{tag}} </p>
+{% endfor %}
+
+
+{% comment %} <h4>Comments</h4>
+
+{% for comment in blog.comment_set.all %}
+<h3>{{comment.title}}</h3>
+<p>{{comment.description}} </p> {% endcomment %}
+
+{% endfor %}
+
+{% endblock content %}
