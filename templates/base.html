@@ -9,8 +9,12 @@
     <title>Sam Bloging</title>
 </head>
 <body>
-    <h1>Logo</h1>
-    <a href="{% url 'blogs' %}">Blogs</a>
+    <a href="{%url 'home' %}">
+        <h1>Logo</h1>
+    </a>
+    <div class="nav-bar-links">
+        <a href="{% url 'blogs' %}">Blogs</a>
+    </div>
     {% block content %}
 
 

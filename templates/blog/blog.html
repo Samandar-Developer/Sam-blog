@@ -5,18 +5,28 @@
 <h3>{{blog.topic}}</h3>
 <img src="{{ blog.cover_image.url }}" alt="Cover image">
 <p>{{blog.description}}</p>
-
+<a href="{%url 'update_blog' blog.id%}">Update Blog</a>
+<a href="{%url 'delete_blog' blog.id%}">Delete Blog</a>
+<hr>
 {% for tag in blog.tags.all %}
 <p>{{tag}} </p>
 {% endfor %}
+<hr>
+<h4>Comments</h4>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{comment.as_p}}
+    <input type="submit" value="Submit">
+</form>
 
 
-{% comment %} <h4>Comments</h4>
-
-{% for comment in blog.comment_set.all %}
-<h3>{{comment.title}}</h3>
-<p>{{comment.description}} </p> {% endcomment %}
-
-{% endfor %}
+<div class="box_of_comment">
+    {% for comment in blog.comment_set.all %}
+    <h3>{{comment.title}}</h3> <span>{{comment.react}}</span>
+    <p>{{comment.description}} </p> 
+    
+    {% endfor %}
+</div>
 
 {% endblock content %}
