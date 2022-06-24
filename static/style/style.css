@@ -1,24 +1,134 @@
+/* imports */
+@import url('https://fonts.googleapis.com/css2?family=Biryani:wght@200&family=Montserrat:wght@100;300;800&display=swap');
+
+/* --- Utils --- */
+*{
+    margin: 0;
+    padding: 0;
+}
 body{
-    background-color: #333;
-    color:white;
+    background-color: #f5f5f5;
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
 }
 
 a{
-    color:aliceblue;
+    color: #000;
+    text-decoration: none;
+}
+a:hover{
+    color: #333;
+}
+.container{
+    width: 80%;
+    margin: auto;
+}
+/* ----------- btn ----------- */
+.btn{
+    display: inline-block;
+    margin: 2px;
+    padding: 10px;
+    border-radius:25px;
+    border: #bdbdbd solid 1px;
+    background:#d8d8d8;
+}
+.btn:hover{
+    border: #eaeaea solid 1px;
+    background: #eaeaea;
 }
 
-
+/* -----------tags------------ */
+.tags{
+    display: block;
+    margin: 5px;
+    padding: 5px;
+    text-align: initial;
+}
+.tag{
+    display: inline-block;
+    background-color: #DADADA;
+    padding: 10px;
+    border-radius: 40px;
+}
+/* --- _navbar.html --- */
 .nav-bar-links{
     display: inline-block;
     width: 100% ;
     padding: 5px;
     margin: 5px;
-    border: #f3f3f3 solid 1px;
+    border: #333 solid 1px;
 }
 
-.box_of_comment{
+/* --- _footer.html --- */
+/* ------------------ Blogs.html --------------------- */
+.blog{
     display: inline-block;
-    width: 60%;
+    width: 350px;
+    height: auto;
     padding: 5px;
     margin: 10px;
+    border: #D8D8D8 solid 0.5px;
+    border-radius: 15px;
+    background: #EEEEEE;
+    text-align: center; 
+}
+.blog a{
+    padding: 5px;
+    text-decoration: none;
+}
+.blog img{
+    width: 300px;
+    padding: 5px;
+    border-radius: 15px;
+}
+.blog p{
+    font-family: "Biryani", sans-serif;
+    font-size: 16px;
+    text-align: initial;
+    padding: 2px;
+    margin: 5px auto;
+    width: 300px;
+}
+
+/* ------------------------ blog.html -------------------- */
+.blog-img{
+    padding: 10px;
+    margin-left: auto ;
+    width: 800px;
+}
+.blog-img img{
+    display: inline-block;
+    padding: 5px;
+    /* margin: 10px auto;
+    width: 500px; */
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+.content-box{
+    width: 80%;
+    margin: auto;
+}
+.description{
+    text-align: justify;
+    padding: 10px;
+    margin-top: 5px;
+}
+.comment{
+    width: 80%;
+    margin: 10px auto;
+}
+.box_of_comment{
+    display: inline-block;
+    margin: 20px auto;
+}
+.comment-submit{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16;
+}
+.comment p{
+    padding: 10px;
+    margin-bottom: 2px;
+    
 }

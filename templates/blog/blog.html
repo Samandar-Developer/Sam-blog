@@ -1,32 +1,64 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<h1>{{blog.title}}</h1>
-<h3>{{blog.topic}}</h3>
-<img src="{{ blog.cover_image.url }}" alt="Cover image">
-<p>{{blog.description}}</p>
-<a href="{%url 'update_blog' blog.id%}">Update Blog</a>
-<a href="{%url 'delete_blog' blog.id%}">Delete Blog</a>
-<hr>
-{% for tag in blog.tags.all %}
-<p>{{tag}} </p>
-{% endfor %}
-<hr>
-<h4>Comments</h4>
-
-<form action="" method="POST">
-    {% csrf_token %}
-    {{comment.as_p}}
-    <input type="submit" value="Submit">
-</form>
-
-
-<div class="box_of_comment">
-    {% for comment in blog.comment_set.all %}
-    <h3>{{comment.title}}</h3> <span>{{comment.react}}</span>
-    <p>{{comment.description}} </p> 
-    
-    {% endfor %}
+<div class="main-blog">
+    <div class="container">
+        <div class="content-box">
+            <div class="blog-img">
+                <img src="{{ blog.cover_image.url }}" alt="Cover image">
+            </div>
+            <h1>{{blog.title}}</h1>
+            <div class="topic">
+                <h3>Topic:{{blog.topic}}</h3>
+            </div>
+            <div class="description">
+                <p>{{blog.description}}</p>
+            </div>
+            <div class="buttons-box">
+                <a href="{%url 'update_blog' blog.id%}">
+                    <div class="btn update">
+                        <span>
+                            Update Blog
+                        </span> 
+                    </div>
+                </a>
+                <a href="{%url 'delete_blog' blog.id %}">
+                    <div class="btn delete">
+                        <span>
+                            Delete Blog
+                        </span> 
+                    </div>
+                </a>    
+            </div>
+            <div class="tags">
+                {%for tag in blog.tags.all%}
+                    <div class="tag">#{{tag}}</div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="comment">
+            <div class="comment-input">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{comment.as_p}}
+                    <input class="btn comment-submit" type="submit" value="Submit">
+                </form> 
+            </div>
+            <div class="box_of_comment">
+                <h3>Comments</h3>
+                {% for comment in blog.comment_set.all %}
+                <div class="comment">
+                    <p>{{comment.description}}</p> 
+                    {% if comment.react == "Good" %}
+                    <span>👍</span>
+                    {% else %}
+                    <span>👎</span>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </div>
+
 
 {% endblock content %}

@@ -4,7 +4,20 @@
 
 {% for blog in blogs %}
 
-<a href="{% url 'blog' blog.id %}">{{blog.title}}</a>
+<div class="blog">
+    <a href="{% url 'blog' blog.id %}">
+        <img src="{{blog.cover_image.url}}" alt="cover image">
+        <div class="box">
+            <h2>{{blog.title}}</h2>
+        </div>
+    </a>
+    <p>{{blog.description|slice:"100"}}</p>
+    <div class="tags">
+        {%for tag in blog.tags.all%}
+            <div class="tag">#{{tag|slice:"3"}}</div>
+        {% endfor %}
+    </div>
+</div>
 
 {% endfor %}
 
