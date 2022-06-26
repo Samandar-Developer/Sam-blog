@@ -1,8 +1,17 @@
-<a href="{%url 'home' %}">
-    <h1>Logo</h1>
-</a>
-<div class="nav-bar-links">
-    <a href="{% url 'blogs' %}">Blogs</a>
-    <a href="{%url 'users'%}">Users</a>
-    <a href="{% url 'user_login' %}" >Login</a>
-</div>
+<header>
+    <a href="{%url 'home' %}">
+        <h1>SamBlog.uz</h1>
+    </a>
+    <nav>
+        <ul class="nav-link">
+            <li><a href="{% url 'blogs' %}">Blogs</a></li>
+            <li><a href="{%url 'users'%}">Users</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'user_logout' %}" >Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'user_login' %}" >Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <a class="create_blog" href="{%url 'create_blog' %}"><span class="create-label">Create New Blog</span><span class="material-symbols-outlined">edit</span></a>
+</header>

@@ -3,9 +3,11 @@
 
 <form action="" method="POST">
     {% csrf_token %}
-    <h1>Are You Sure That You Want To Delete {{blog.title}}?</h1>
-    <input type="submit" value="Delete">
-    <a href="{%url 'blog' blog.id%}">Go Back</a>
+    <div class="delete-question-form">
+        <h1>Are You Sure That You Want To Delete "{{blog.title}}"?</h1>
+        <input type="submit" style="font-family:'Montserrat', sans-serif" value="Delete" class="btn">
+        <a href="{%url 'blog' blog.id%}" class="btn">Go Back</a>
+    </div>
 </form>
 
 {% endblock content %}

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Blog
 from .forms import BlogForm, CommentForm
 
@@ -7,13 +8,13 @@ def home(request):
 
 
 def blogs(request):
-    blogs = Blog.objects.all()
+    blogs = Blog.objects.all().filter(is_public=True) 
     context = {
         "blogs": blogs,
     }
     return render(request, template_name="blog/blogs.html", context=context)
 
-
+@login_required(login_url="user_login")
 def blog(request, pk):
     blog = Blog.objects.get(id=pk)
     comment = CommentForm()
@@ -22,6 +23,9 @@ def blog(request, pk):
         "comment":comment,
     }
     return render(request, template_name="blog/blog.html", context=context)
+
+def by_topics(request):
+    return render(request, template_name="pages/by_topics.html")
 
 
 def createBlog(request):

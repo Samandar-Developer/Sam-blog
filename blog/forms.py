@@ -13,3 +13,7 @@ class CommentForm(ModelForm):
     class Meta:
         model = Comment
         fields = ("description","react")
+        labels = {
+            "description":"Comment",
+            "react":"Reaction"
+        }

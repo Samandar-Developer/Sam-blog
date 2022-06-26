@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
+{% if blog.is_public %}
 <div class="main-blog">
     <div class="container">
         <div class="content-box">
             <div class="blog-img">
-                <img src="{{ blog.cover_image.url }}" alt="Cover image">
+                <a href="{{blog.cover_image.url}}">
+                    <img src="{{ blog.cover_image.url }}" alt="Cover image">
+                </a>
             </div>
             <h1>{{blog.title}}</h1>
             <div class="topic">
@@ -18,6 +21,9 @@
                     <div class="btn update">
                         <span>
                             Update Blog
+                        </span>
+                        <span class="material-symbols-outlined">
+                            edit_note
                         </span> 
                     </div>
                 </a>
@@ -25,6 +31,9 @@
                     <div class="btn delete">
                         <span>
                             Delete Blog
+                        </span>
+                        <span class="material-symbols-outlined">
+                            delete
                         </span> 
                     </div>
                 </a>    
@@ -60,5 +69,7 @@
     </div>
 </div>
 
-
+{% else %}
+<h1>Owner desided to make this blog private</h1>
+{% endif %}
 {% endblock content %}

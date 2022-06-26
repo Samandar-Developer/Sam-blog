@@ -2,8 +2,16 @@
 
 {% block content %}
 
-login and registration page
+<form action="{%url 'user_login'%}" method="POST">
+    {% csrf_token %}
 
+    <label>Username</label>
+    <input type="text" name="username">
+    <label>Password</label>
+    <input type="password" name="password">
+    <input type="submit" value="Submit">
+
+</form>
 {% endblock content %}
 
 
