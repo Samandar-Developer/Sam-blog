@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Blog
+from .models import *
 from .forms import BlogForm, CommentForm
 
 def home(request):
@@ -25,8 +25,18 @@ def blog(request, pk):
     return render(request, template_name="blog/blog.html", context=context)
 
 def by_topics(request):
-    return render(request, template_name="pages/by_topics.html")
+    topics = Theme.objects.all()
+    context = {
+        "topics":topics,
+    }
+    return render(request, template_name="pages/by_topics.html", context=context)
 
+def in_topic(request, pk):
+    topic = Theme.objects.get(id=pk)
+    context = {
+        "topic":topic,
+    }
+    return render(request, "pages/topic.html", context)
 
 def createBlog(request):
     blog = BlogForm()

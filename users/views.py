@@ -18,7 +18,7 @@ def user_login(request):
             login(request, user)
             return redirect("home")
         else:
-            print("Password or Username does not exist.")
+            print("Password or Username does not match.")
     return render(request, "pages/registration.html")
 
 

@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 
-by topics
+{% for topic in topics %}
+<a href="{%url 'in_topic' topic.id%}">
+    <h1>{{topic.title}}</h1>
+</a>
+<p>{{topic.short_description}}</p>
+
+{% endfor %}
 
 {% endblock content %}
 
