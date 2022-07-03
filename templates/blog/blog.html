@@ -15,7 +15,7 @@
                     <h4>Topic: {{blog.topic}}</h4>
                 </div>
                 <div class="description">
-                    <p>{{blog.description}}</p>
+                    <p>{{blog.description|safe}}</p>
                 </div>
                 <div class="buttons-box">
                     <a href="{%url 'update_blog' blog.id%}">

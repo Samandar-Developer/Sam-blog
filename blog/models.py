@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor_uploader.fields import RichTextUploadingField
 import uuid 
 
 
@@ -6,7 +7,7 @@ class Blog(models.Model):
     # owner
     title = models.CharField(max_length=200) 
     cover_image = models.ImageField(default="default.jpg", null=True, blank=True, upload_to="cover_img/")
-    description = models.TextField(null=True, blank=True)
+    description = RichTextUploadingField(null=True, blank=True)
     topic = models.ForeignKey("Theme", on_delete=models.SET_NULL, null=True, blank=True)
     tags = models.ManyToManyField("Tag", blank=True)
     is_public = models.BooleanField(default=True)

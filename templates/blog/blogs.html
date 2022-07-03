@@ -12,7 +12,7 @@
                         <h2>{{blog.title}}</h2>
                     </div>
                 </a>
-                <p>{{blog.description|slice:"100"}}</p>
+                <p>{{blog.description|safe|slice:":100"}}</p>
                 <div class="tags">
                     {%for tag in blog.tags.all%}
                     <div class="tag">#{{tag|slice:"3"}}</div>

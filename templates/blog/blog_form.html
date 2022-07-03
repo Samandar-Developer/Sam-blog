@@ -3,6 +3,7 @@
 
 <form action="" method="POST">
     {% csrf_token %}
+    {{blog.media}}
     {{blog.as_p}}
     <input type="submit" value="Submit">
 </form>
