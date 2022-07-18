@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+
+
 def users(request):
     return render(request, "users/users.html")
-
-
 
 def user_login(request):
     if request.method == "POST":
@@ -25,3 +25,10 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect("home")
+
+
+def user_registration(request):
+    context ={
+        "page_type":"registration",
+    }
+    return render(request, template_name="pages/registration.html", context=context)

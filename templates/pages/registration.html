@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+{% if page_type == 'registration' %}
+registration
+{% else %}
 <form action="{%url 'user_login'%}" method="POST">
     {% csrf_token %}
 
@@ -10,8 +12,9 @@
     <label>Password</label>
     <input type="password" name="password">
     <input type="submit" value="Submit">
-
+    <p>Don't have an account?<a href="{% url 'user_registration'%}">Sing up</a></p>
 </form>
+{% endif %}
 {% endblock content %}
 
 
